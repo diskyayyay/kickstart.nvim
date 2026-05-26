@@ -31,3 +31,7 @@ require('lualine').setup {
 -- Cycle buffers with the bufferline (in addition to your existing th/tl)
 vim.keymap.set('n', '<Tab>', '<Cmd>BufferLineCycleNext<CR>', { desc = 'Next buffer (bufferline)' })
 vim.keymap.set('n', '<S-Tab>', '<Cmd>BufferLineCyclePrev<CR>', { desc = 'Prev buffer (bufferline)' })
+
+-- close tab
+vim.keymap.set('n', '<leader>x', function() require('mini.bufremove').delete(0, false) end,
+  { desc = 'Close buffer (keep window)' })
