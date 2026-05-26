@@ -32,6 +32,9 @@ require('lualine').setup {
 vim.keymap.set('n', '<Tab>', '<Cmd>BufferLineCycleNext<CR>', { desc = 'Next buffer (bufferline)' })
 vim.keymap.set('n', '<S-Tab>', '<Cmd>BufferLineCyclePrev<CR>', { desc = 'Prev buffer (bufferline)' })
 
+-- pick tab
+vim.keymap.set('n', '<leader>t', '<Cmd>BufferLinePick<CR>', { desc = 'Pick tab' })
+
 -- close tab
 vim.keymap.set('n', '<leader>x', function() require('mini.bufremove').delete(0, false) end,
   { desc = 'Close buffer (keep window)' })

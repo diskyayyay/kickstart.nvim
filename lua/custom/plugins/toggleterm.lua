@@ -27,6 +27,13 @@ require('toggleterm').setup {
 vim.keymap.set('n', '<leader>tl', '<Cmd>TermSelect<CR>',
   { desc = '[T]erminal: [L]ist / switch' })
 
+-- small bottom terminal
+vim.keymap.set('n', '<leader>st', function()
+  vim.cmd 'botright 5split | terminal'
+  vim.bo.buflisted = false
+  vim.cmd.startinsert()
+end, { desc = '[S]mall [T]erminal at bottom' })
+
 -- Re-resize any visible vertical toggleterm windows when nvim is resized
 vim.api.nvim_create_autocmd('VimResized', {
   callback = function()
@@ -44,8 +51,8 @@ vim.api.nvim_create_autocmd('VimResized', {
 vim.api.nvim_create_autocmd('TermOpen', {
   pattern = 'term://*',
   callback = function()
+    vim.bo.buflisted = false
     local opts = { buffer = 0, silent = true }
-    -- jk or <Esc> exits terminal mode (back to normal mode, terminal stays open)
     vim.keymap.set('t', 'jk', [[<C-\><C-n>]], opts)
     vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], opts)
     -- Ctrl+h/j/k/l: jump straight to another window from terminal mode

@@ -9,6 +9,16 @@ set number
 set relativenumber
 set hlsearch
 
+" powershell as default shell
+set shell=powershell.exe
+set shellcmdflag=-NoLogo\ -NoProfile\ -ExecutionPolicy\ RemoteSigned\ -Command
+set shellquote=
+set shellxquote=
+
+" thicker, darker window separators
+set fillchars+=vert:┃,horiz:━,horizup:┻,horizdown:┳,vertleft:┫,vertright:┣,verthoriz:╋
+highlight WinSeparator guifg=#414868 guibg=NONE
+
 " Leader is Space (matches kickstart)
 let mapleader = " "
 
