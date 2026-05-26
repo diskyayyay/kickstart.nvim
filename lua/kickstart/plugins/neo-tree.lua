@@ -17,6 +17,7 @@ vim.keymap.set('n', '\\', '<Cmd>Neotree reveal<CR>', { desc = 'NeoTree reveal', 
 
 require('neo-tree').setup {
   filesystem = {
+    follow_current_file = { enabled = true, leave_dirs_open = true },
     window = {
       mappings = {
         ['\\'] = 'close_window',
