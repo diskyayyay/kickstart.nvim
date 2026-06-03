@@ -19,6 +19,11 @@ set shellxquote=
 set fillchars+=vert:┃,horiz:━,horizup:┻,horizdown:┳,vertleft:┫,vertright:┣,verthoriz:╋
 highlight WinSeparator guifg=#414868 guibg=NONE
 
+" auto-reload files changed on disk
+set autoread
+autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * silent! checktime
+autocmd FileChangedShellPost * echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
+
 " Leader is Space (matches kickstart)
 let mapleader = " "
 

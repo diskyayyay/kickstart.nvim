@@ -33,7 +33,7 @@ vim.keymap.set('n', '<Tab>', '<Cmd>BufferLineCycleNext<CR>', { desc = 'Next buff
 vim.keymap.set('n', '<S-Tab>', '<Cmd>BufferLineCyclePrev<CR>', { desc = 'Prev buffer (bufferline)' })
 
 -- pick tab
-vim.keymap.set('n', '<leader>t', '<Cmd>BufferLinePick<CR>', { desc = 'Pick tab' })
+vim.keymap.set('n', '<leader>p', '<Cmd>BufferLinePick<CR>', { desc = 'Pick tab' })
 
 -- close tab
 vim.keymap.set('n', '<leader>x', function() require('mini.bufremove').delete(0, false) end,

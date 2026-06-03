@@ -34,6 +34,19 @@ vim.keymap.set('n', '<leader>st', function()
   vim.cmd.startinsert()
 end, { desc = '[S]mall [T]erminal at bottom' })
 
+-- floating terminal
+local Terminal = require('toggleterm.terminal').Terminal
+local float_term = Terminal:new {
+  direction = 'float',
+  hidden = true,
+  on_open = function(term)
+    vim.keymap.set('t', '<Esc>', function() term:toggle() end, { buffer = term.bufnr })
+    vim.keymap.set('n', '<Esc>', function() term:toggle() end, { buffer = term.bufnr })
+  end,
+}
+vim.keymap.set('n', '<leader>tf', function() float_term:toggle() end,
+  { desc = '[T]erminal: [F]loating' })
+
 -- Re-resize any visible vertical toggleterm windows when nvim is resized
 vim.api.nvim_create_autocmd('VimResized', {
   callback = function()
