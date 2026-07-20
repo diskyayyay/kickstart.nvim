@@ -690,6 +690,7 @@ do
     -- gopls = {},
     pyright = {},
     ruff = {},
+    clangd = {},
     -- rust_analyzer = {},
     --
     -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -779,6 +780,8 @@ do
       local enabled_filetypes = {
         -- lua = true,
         python = true,
+        cpp = true,
+        c = true,
       }
       if enabled_filetypes[vim.bo[bufnr].filetype] then
         return { timeout_ms = 500 }

@@ -24,6 +24,19 @@ set autoread
 autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * silent! checktime
 autocmd FileChangedShellPost * echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 
+" c/c++: 4-space indent
+autocmd FileType c,cpp,h,hpp setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
+
+" jupytext: auto-sync paired .ipynb when saving a .py with one
+autocmd BufWritePost *.py call s:JupytextSync()
+function! s:JupytextSync()
+  let l:ipynb = expand('%:r') . '.ipynb'
+  if filereadable(l:ipynb)
+    call jobstart(['jupytext', '--sync', l:ipynb], {'detach': v:true})
+  endif
+endfunction
+
+
 " Leader is Space (matches kickstart)
 let mapleader = " "
 
